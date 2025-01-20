@@ -7,6 +7,14 @@
 
 // Constants - User-servicable parts
 // In a longer project I like to put these in a separate file
+
+var tileCount = 50;
+var actRandomSeed = 0;
+
+var circleAlpha = 170;
+var circleColor;
+
+
 const VALUE1 = 1;
 const VALUE2 = 2;
 
@@ -49,31 +57,44 @@ function setup() {
     resizeScreen();
   });
   resizeScreen();
+  circleColor = giveMeRandomColor();
+
 }
 
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
-  background(220);    
-  // call a method on the instance
-  myInstance.myMethod();
+  translate(width / tileCount / 2, height / tileCount / 2);
 
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
-  noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
+  background(255);
 
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
+  randomSeed(actRandomSeed);
+
+  stroke(circleColor);
+  strokeWeight(mouseY / mouseX);
+
+  for (var gridY = 0; gridY < tileCount; gridY++) {
+    for (var gridX = 0; gridX < tileCount; gridX++) {
+
+
+      var posX = width / tileCount * gridX;
+      var posY = height / tileCount * gridY;
+
+      var shiftX = random(mouseX, -mouseX) / 20;
+      var shiftY = random(mouseX, -mouseX) / 20;
+      
+      
+      ellipse(posX + shiftX, posY + shiftY, -mouseY / 10, -mouseY / 10);
+    }
+  }
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
 function mousePressed() {
-    // code to run when mouse is pressed
+  actRandomSeed = random(100000);
+  circleColor = giveMeRandomColor();
+}
+
+
+
+function giveMeRandomColor(){
+  return color(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), circleAlpha);
 }
