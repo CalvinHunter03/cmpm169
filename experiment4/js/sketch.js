@@ -125,7 +125,7 @@ EXCLUSION);
     0, 0, canvasContainer.width() * 1/6, canvasContainer.height() * 1/4 + 50 , 
     BLEND);
 
-    pop()
+    pop();
 
 
     //https://stackoverflow.com/questions/45388765/how-to-rotate-image-in-p5-js
