@@ -22,6 +22,14 @@ const myCreation = {
   "action": ["save the princess", "jump on the bed", "play minecraft", "listen to music", "get down on all fours and crawl", "hold a normal conversation without thinking about her", "dance"]
 }
 
+let personList = [];
+let buildingList = [];
+let animalList = [];
+let numberList = [];
+let morningActivityList = [];
+let itemList = [];
+let actionList = [];
+
 let resetButton = document.createElement("button");
 
 
@@ -82,7 +90,8 @@ function setup() {
 
   //Input button
   let inputButton = createButton("Input");
-  inputButton.position(canvasContainer.width() * 3 / 4, canvasContainer.height() /4)
+  inputButton.position(canvasContainer.width() * 3 / 4, canvasContainer.height() /4);
+  inputButton.mousePressed(inputStuff);
 
   };
 
