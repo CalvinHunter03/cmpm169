@@ -87,7 +87,6 @@ function setup() {
   result = grammer.flatten("#start#");
   // console.log(result);
 
-
   //Reset Button - Create, mouse pressed
   let resetButton = createButton('Reset');
   resetButton.position(canvasContainer.width() / 3, canvasContainer.height()/4);
@@ -124,44 +123,44 @@ function setup() {
   itemButton.mousePressed(addItemPlease);
 
   let actionButton = createButton('Add Action');
-  actionButton.position(canvasContainer().width/20, canvasContainer.height()*7/8);
-  itemButton.mousePressed(addActionPlease);
+  actionButton.position(canvasContainer.width()/20, canvasContainer.height()*7/8);
+  actionButton.mousePressed(addActionPlease);
 
   };
 
   function addPersonPlease(){
     let person = prompt("Enter a person's name, only one.");
-    personList.push(person);
+    defaultPersonList.push(person);
   }
 
   function addBuildingPlease(){
-    let building = prompt("Enter an establishment");
-    buildingList.push(building);
+    let building = prompt("Enter an establishment / building");
+    defaultBuildingList.push(building);
   }
 
   function addAnimalPlease(){
     let animal = prompt("Enter an animal");
-    animalList.push(animal);
+    defaultAnimalList.push(animal);
   }
 
   function addNumberPlease(){
     let number = prompt("Enter a number");
-    numberList.push(number);
+    defaultNumberList.push(number);
   }
 
   function addMorningActivityPlease(){
     let ma = prompt("Enter a morning activity");
-    morningActivityList.push(ma);
+    defaultMorningActivityList.push(ma);
   }
 
   function addItemPlease(){
     let item = prompt("Enter an item");
-    itemList.push(item);
+    defaultItemList.push(item);
   }
 
   function addActionPlease(){
     let action = prompt("Enter an action");
-    actionList.push(action);
+    defaultActionList.push(action);
   }
 
   function resetStory(){
