@@ -47,5 +47,63 @@ function draw() {
   
 }
 
+let ingredientSet = new Set();
+let searchList = [];
+let matchedIngredient = [];
 
 
+let ingredientInput = document.createElement("input");
+ingredientInput.innerHTML = "Enter One Ingredient";
+ingredientInput.type = "text";
+
+let addToSearchButton = document.createElement("button");
+addToSearchButton.innerHTML = "Add to search list";
+addToSearchButton.addEventListener("click", () => {
+  searchList.push(ingredientInput.value);
+  ingredientInput.value = "";
+})
+
+let searchListDisplay = document.createElement("li");
+
+
+let searchButton = document.createElement("button");
+searchButton.innerHTML = "Search";
+searchButton.addEventListener("click", () => {
+  
+})
+
+let ingredientText = document.createElement("h1");
+ingredientText.innerHTML = "Enter One Ingredient";
+
+let theCanvas = document.getElementById("canvas-container");
+
+let appendList = [ingredientText, ingredientInput, addToSearchButton];
+
+for(let i = 0; i < appendList.length; i++){
+  theCanvas.append(appendList[i]);
+} 
+
+
+
+
+fetch('./Recipe/recipes_images.json')
+  .then(response => response.json()) // Convert to JSON
+  .then(json => {
+    for(let i = 0; i < json.recipes.length; i++){
+      if(json.recipes[i].tags && json.recipes[i].tags.ingredient){
+        for(let j = 0; j < json.recipes[i].tags.ingredient.length; j++){
+
+
+          ingredientSet.add(json.recipes[i].tags.ingredient[j]);
+        }
+      }
+    }
+
+
+    const sortedArray = Array.from(ingredientSet).sort();
+    console.log(sortedArray);
+  })
+  .catch(error => console.error('Fetch error:', error));
+
+
+  
