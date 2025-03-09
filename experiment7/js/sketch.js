@@ -47,9 +47,21 @@ function draw() {
   
 }
 
+function convertToListElement(listElement){
+
+  let tempListElement = document.createElement("li");
+  tempListElement.innerHTML = listElement;
+
+  return tempListElement;
+
+
+}
+
 let ingredientSet = new Set();
 let searchList = [];
 let matchedIngredient = [];
+
+let searchListDisplay = document.createElement("div");
 
 
 let ingredientInput = document.createElement("input");
@@ -59,11 +71,20 @@ ingredientInput.type = "text";
 let addToSearchButton = document.createElement("button");
 addToSearchButton.innerHTML = "Add to search list";
 addToSearchButton.addEventListener("click", () => {
+  if(ingredientInput.value != ""){
+    let tempListElement = convertToListElement(ingredientInput.value);
+  searchListDisplay.append(tempListElement);
   searchList.push(ingredientInput.value);
   ingredientInput.value = "";
+  }
 })
 
-let searchListDisplay = document.createElement("li");
+let clearListButton = document.createElement("button");
+clearListButton.innerHTML = "Clear";
+clearListButton.addEventListener("click", () => {
+  searchListDisplay.innerHTML = "";
+  searchList = [];
+})
 
 
 let searchButton = document.createElement("button");
@@ -77,7 +98,7 @@ ingredientText.innerHTML = "Enter One Ingredient";
 
 let theCanvas = document.getElementById("canvas-container");
 
-let appendList = [ingredientText, ingredientInput, addToSearchButton];
+let appendList = [ingredientText, ingredientInput, addToSearchButton, clearListButton, searchListDisplay];
 
 for(let i = 0; i < appendList.length; i++){
   theCanvas.append(appendList[i]);
