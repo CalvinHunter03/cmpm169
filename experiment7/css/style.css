@@ -16,4 +16,14 @@ body {
 #canvas-container {
     width: 100%;
     height: 600px;
+    position: relative;
+}
+
+#right-div {
+    width:50%;
+    height: 100%;
+
+    top: 0;
+    left: 50%;
+    position: absolute;
 }
