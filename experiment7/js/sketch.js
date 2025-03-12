@@ -79,8 +79,6 @@ function displayRecipeNameSet(theSet){
     tempElement.innerHTML = tempArray[i];
     rightDiv.append(tempElement);
   }
-
- 
 }
 
 let ingredientSet = new Set();
@@ -115,6 +113,7 @@ clearListButton.innerHTML = "Clear";
 clearListButton.addEventListener("click", () => {
   searchListDisplay.innerHTML = "";
   searchList = [];
+  rightDiv.innerHTML = "";
 })
 
 
