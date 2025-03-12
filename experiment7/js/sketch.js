@@ -71,6 +71,18 @@ function compareTheseTWo(jsonIngredientList, userSearchList){
   return false;
 }
 
+function displayRecipeNameSet(theSet){
+
+  const tempArray = Array.from(theSet);
+  for(let i = 0; i < theSet.size; i++){
+    let tempElement = document.createElement("li");
+    tempElement.innerHTML = tempArray[i];
+    rightDiv.append(tempElement);
+  }
+
+ 
+}
+
 let ingredientSet = new Set();
 
 let recipeNameSet = new Set();
@@ -80,10 +92,12 @@ let recipeNameList = [];
 let searchListDisplay = document.createElement("div");
 let rightDiv = document.getElementById("right-div");
 
+// INGREIDENT INPUT
 let ingredientInput = document.createElement("input");
 ingredientInput.innerHTML = "Enter One Ingredient";
 ingredientInput.type = "text";
 
+//ADD TO SEARCH BUTTON
 let addToSearchButton = document.createElement("button");
 addToSearchButton.innerHTML = "Add to search list";
 addToSearchButton.addEventListener("click", () => {
@@ -95,6 +109,7 @@ addToSearchButton.addEventListener("click", () => {
   }
 })
 
+//CLEAR LIST BUTTON
 let clearListButton = document.createElement("button");
 clearListButton.innerHTML = "Clear";
 clearListButton.addEventListener("click", () => {
@@ -103,6 +118,7 @@ clearListButton.addEventListener("click", () => {
 })
 
 
+//SEARCH BUTTON
 let searchButton = document.createElement("button");
 searchButton.innerHTML = "Search";
 searchButton.addEventListener("click", () => {
@@ -124,6 +140,7 @@ searchButton.addEventListener("click", () => {
           }
       } 
     }
+    displayRecipeNameSet(recipeNameSet);
     console.log(recipeNameSet)
 })
     .catch(error => console.error('Fetch error inside search button', error))
@@ -134,8 +151,6 @@ https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string
 const str = "Crème Brûlée"
 str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 */
-
-
 
 
 
