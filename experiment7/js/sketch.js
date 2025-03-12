@@ -81,6 +81,13 @@ function displayRecipeNameSet(theSet){
   }
 }
 
+function convertIngredient(ingredient){
+  ingredient.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  let newIngredient = ingredient.toLowerCase();
+  return newIngredient;
+}
+
 let ingredientSet = new Set();
 
 let recipeNameSet = new Set();
@@ -129,7 +136,9 @@ searchButton.addEventListener("click", () => {
           let num = 0;
           for(let ingredient of json.recipes[i].tags.ingredient){
             for(let userIngredient of searchList){
-              if(ingredient === userIngredient){
+              let tempIng = convertIngredient(ingredient);
+              let tempUserIng = convertIngredient(userIngredient)
+              if(tempIng === tempUserIng){
                 num++;
               }
             }
